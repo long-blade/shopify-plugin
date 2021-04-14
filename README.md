@@ -42,6 +42,12 @@ $ composer require mmavroforakis/shopify-plugin:dev-master
 
 You can find more of Handling private packages [here](https://getcomposer.org/doc/articles/handling-private-packages.md#handling-private-packages).
 
+Last, you need to [load](https://book.cakephp.org/4/en/plugins.html#loading-a-plugin) the plugin to your project!
+```php
+// src/Application.php in bootstrap() method
+
+$this->addPlugin('Shopify');
+```
 ___
 ## Site object
 
@@ -156,6 +162,20 @@ $inventory = [
 $inventory = new \Shopify\Model\Inventory($inventory); // Create the entity;
 $inventoryResource = new \Shopify\Resource\InventoryLevels($site);
 $inventoryResource->adjustInventory($inventory);
+```
+____
+
+###Order
+An [order](https://shopify.dev/docs/admin-api/rest/reference/orders/order#properties-2021-01) is a customer's completed request to purchase one or more products from a shop.
+
+How to Retrieve a list of orders:
+```php
+$orders = new Shopify\Resource\Orders($site);
+// All orders
+$allOrdersWithoutPagination = $orders->getPaginatedResource();
+
+// All orders since Id:
+$ordersSinsId= $orders->getOrdersSinceId(3692914802743);
 ```
 ____
 
