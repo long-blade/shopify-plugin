@@ -1,7 +1,7 @@
 {
     "name": "mmavroforakis/shopify-plugin",
     "description": "Shopify plugin for CakePHP",
-    "type": "cakephp-plugin",
+    "type": "vcs",
     "license": "MIT",
     "keywords": [
         "cakephp",
