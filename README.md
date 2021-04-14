@@ -5,10 +5,44 @@ A shopify plugin that interacts with [shopify api](https://shopify.dev/docs/admi
 You can install this plugin into your CakePHP application using [composer](https://getcomposer.org).
 
 The recommended way to install composer packages is:
+```bash
+$ composer config repositories.mmavroforakis/shopify-plugin vcs git@gitlab.sld.gr:mmavroforakis/shopify-plugin.git
+```
+```json5
 
+{
+  //In your local composer.json file you should have something like this by executing 
+  //the above command.
+  "repositories": [
+    {
+      "name": "mmavroforakis/shopify-plugin",
+      "type": "vcs",
+      "url": "git@gitlab.sld.gr:mmavroforakis/shopify-plugin.git"
+    }
+  ],
+  
+  //Or
+  "repositories": {
+    "mmavroforakis/shopify-plugin": {
+      "type": "vcs",
+      "url": "git@gitlab.sld.gr:mmavroforakis/shopify-plugin.git"
+    }
+  }
+}
 ```
-composer require mmavroforakis/shopify-plugin
+Then simply run:
+```bash
+$ composer require mmavroforakis/shopify-plugin
 ```
+
+If you like to keep up with non-only stable versions/releases, you can do the following instead:
+```bash
+$ composer require mmavroforakis/shopify-plugin:dev-master
+```
+
+You can find more of Handling private packages [here](https://getcomposer.org/doc/articles/handling-private-packages.md#handling-private-packages).
+
+___
 ## Site object
 
 In order to interact with the plugin you need to create a site object with the minimum require data.
