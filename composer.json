@@ -1,0 +1,29 @@
+{
+    "name": "development/shopify",
+    "description": "Shopify plugin for CakePHP",
+    "type": "cakephp-plugin",
+    "license": "MIT",
+    "keywords": [
+        "cakephp",
+        "plugin"
+    ],
+    "homepage": "https://gitlab.sld.gr/development/shopify-plugin",
+    "authors": [{"name" : "Mavroforakis"}],
+    "require": {
+        "cakephp/cakephp": "^4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Shopify\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Shopify\\Test\\": "tests/",
+            "Cake\\Test\\": "vendor/cakephp/cakephp/tests/"
+        }
+    }
+}
