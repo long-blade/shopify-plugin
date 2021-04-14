@@ -1,5 +1,5 @@
 {
-    "name": "development/shopify",
+    "name": "mavroforakis/shopify-plugin",
     "description": "Shopify plugin for CakePHP",
     "type": "cakephp-plugin",
     "license": "MIT",
@@ -7,8 +7,12 @@
         "cakephp",
         "plugin"
     ],
-    "homepage": "https://gitlab.sld.gr/development/shopify-plugin",
-    "authors": [{"name" : "Mavroforakis"}],
+    "homepage": "https://gitlab.sld.gr/mavroforakis/shopify-plugin",
+    "authors": [
+        {
+        "name" : "Mavroforakis Michael"
+        }
+    ],
     "require": {
         "cakephp/cakephp": "^4.0"
     },
