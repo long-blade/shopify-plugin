@@ -6,7 +6,7 @@ You can install this plugin into your CakePHP application using [composer](https
 
 The recommended way to install composer packages is:
 ```bash
-$ composer config repositories.mmavroforakis/shopify-plugin vcs git@gitlab.sld.gr:mmavroforakis/shopify-plugin.git
+$ composer config repositories.mmavroforakis/shopify-plugin vcs https://gitlab.sld.gr/mmavroforakis/shopify-plugin.git
 ```
 ```json5
 
@@ -17,7 +17,7 @@ $ composer config repositories.mmavroforakis/shopify-plugin vcs git@gitlab.sld.g
     {
       "name": "mmavroforakis/shopify-plugin",
       "type": "vcs",
-      "url": "git@gitlab.sld.gr:mmavroforakis/shopify-plugin.git"
+      "url": "https://gitlab.sld.gr/mmavroforakis/shopify-plugin.git"
     }
   ],
   
@@ -25,7 +25,7 @@ $ composer config repositories.mmavroforakis/shopify-plugin vcs git@gitlab.sld.g
   "repositories": {
     "mmavroforakis/shopify-plugin": {
       "type": "vcs",
-      "url": "git@gitlab.sld.gr:mmavroforakis/shopify-plugin.git"
+      "url": "https://gitlab.sld.gr/mmavroforakis/shopify-plugin.git"
     }
   }
 }
