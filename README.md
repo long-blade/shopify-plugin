@@ -179,5 +179,20 @@ $ordersSinsId= $orders->getOrdersSinceId(3692914802743);
 ```
 ____
 
+###Smart Collections
+
+The [Collect](https://shopify.dev/docs/admin-api/rest/reference/products/smartcollection#properties-2021-01) resource is used to connect a product to a smart collection. 
+However, these collects can't be added or removed from the API as they're managed by the rules of the smart collection.
+
+How to get the collection a product belongs to:
+
+```php
+use Shopify\Resource\SmartCollections;
+$smrtCollections = new SmartCollections($site);
+
+// This will return an array containing all the collections a product belongs to.
+$collection = $smrtCollections->get(['product_id' => '12345678'])->getResource('smart_collections');
+```
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
