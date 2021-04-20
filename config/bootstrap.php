@@ -10,6 +10,6 @@ return [
     'export' => [
         'path' => RESOURCES . 'json' . DS,
         'file_type' => 'json',
-        'lifetime' => 60 * 60 * 3, // 3h
+        'lifetime' => 60 * 60 * 3, // Default 1800sec
     ],
 ];

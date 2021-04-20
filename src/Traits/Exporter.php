@@ -14,13 +14,14 @@ trait Exporter
 
     /**
      * @param array $data
+     * @param int $lifetime
      *
      * @return $this
      */
-    public function export(array $data)
+    public function export(array $data, int $lifetime = 0)
     {
         //get the file if exists and if yes and needs update update it else serve it
-        if ($this->fileNeedsUpdate())
+        if ($this->fileNeedsUpdate($lifetime))
         {
             // if file exists update it, else create it.
             $file = file_put_contents($this->getResourceAbsolutePath(), json_encode($data));
@@ -69,16 +70,17 @@ trait Exporter
     /**
      * Check if the file exist and should be updated.
      *
+     * @param int $lifetime
+     *
      * @return bool
      */
-    protected function fileNeedsUpdate(): bool
+    protected function fileNeedsUpdate(int $lifetime = 0): bool
     {
         $path = $this->getResourceAbsolutePath();
 
         if (is_file($path))
         {
-            $lifetime = (string) Configure::read('export.lifetime', 1800);
-            return time() - filemtime($path) >= $lifetime;
+            return time() - filemtime($path) >= $lifetime ?: (string) Configure::read('export.lifetime', 1800);
         }
 
         return true;
