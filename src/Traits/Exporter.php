@@ -80,7 +80,8 @@ trait Exporter
 
         if (is_file($path))
         {
-            return time() - filemtime($path) >= $lifetime ?: (string) Configure::read('export.lifetime', 1800);
+            $time = $lifetime ?: (string) Configure::read('export.lifetime', 1800);
+            return time() - filemtime($path) >= $time;
         }
 
         return true;
