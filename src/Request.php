@@ -64,7 +64,7 @@ abstract class Request
      *
      * @return mixed
      */
-    protected function makeHttpRequest(string $endpoint, string $method ='get', $payload = [], array $headers = [])
+    protected function makeHttpRequest(string $endpoint, string $method = 'get', $payload = [], array $headers = [])
     {
         return $this->client->$method($endpoint, $payload, $headers);
     }
@@ -77,23 +77,16 @@ abstract class Request
      */
     public function __call($method, $arguments): Request
     {
-        if (! empty($arguments))
-        {
-            if ($arguments[0] instanceof Model)
-            {
-                if ($arguments[0]->isComplete())
-                {
+        if (!empty($arguments)) {
+            if ($arguments[0] instanceof Model) {
+                if ($arguments[0]->isComplete()) {
                     $this->payload = $arguments[0]->getPayload();
-                }
-                else
-                {
+                } else {
                     throw new Exception(
-                        sprintf('Incomplete object::%s provided %s::%s.', $arguments[0]->getModelName() , static::class, $method)
+                        sprintf('Incomplete object::%s provided %s::%s.', $arguments[0]->getModelName(), static::class, $method)
                     );
                 }
-            }
-            elseif (is_array($arguments[0]) && !empty($arguments[0]))
-            {
+            } elseif (is_array($arguments[0]) && !empty($arguments[0])) {
                 $this->payload = $arguments[0];
             }
         }
@@ -105,9 +98,7 @@ abstract class Request
         if (in_array($method, $http)) //TODO: Throw exception for unauthorized method types now we just ignore themslac
         {
             $this->response = $this->makeHttpRequest($this->url(), $method, $this->payload, $this->headers);
-        }
-        else
-        {
+        } else {
             throw new Exception(
                 sprintf('Undefined method %s::%s.', static::class, $method)
             );
@@ -131,11 +122,26 @@ abstract class Request
         $res = (array)$this->getResource();
         $res = reset($res);
 
-        if ($this->model)
-        {
+        if ($this->model) {
             return new $this->model($res);
         }
 
         return $res;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getErrors(): ?array
+    {
+        if (!isset($this->response) || !isset($this->response->_json['errors'])) {
+            return null;
+        }
+
+        if (empty($this->response->_json['errors'])) {
+            return null;
+        }
+
+        return $this->response->_json['errors'];
     }
 }
