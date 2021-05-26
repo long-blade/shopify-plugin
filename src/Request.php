@@ -139,6 +139,11 @@ abstract class Request
             return null;
         }
 
+        // TODO: temp fix for string return investigate more
+        if (is_string($errors['errors'])) {
+            return null;
+        }
+
         return $errors['errors'];
     }
 }
