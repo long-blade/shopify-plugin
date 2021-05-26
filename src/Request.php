@@ -134,11 +134,11 @@ abstract class Request
      */
     public function getErrors(): ?array
     {
-        $errors = $this->response->getJson()['errors'];
-        if (empty($errors)) {
+        $errors = $this->response->getJson();
+        if (empty($errors) || !isset($errors['errors']) || empty($errors['errors'])) {
             return null;
         }
 
-        return $errors;
+        return $errors['errors'];
     }
 }
