@@ -134,9 +134,9 @@ abstract class Request
      */
     public function getErrors(): ?array
     {
-        if (!isset($this->response) || !isset($this->response->_json['errors'])) {
-            return null;
-        }
+//        if (!isset($this->response) || !isset($this->response->_json['errors'])) {
+//            return null;
+//        }
 
         if (empty($this->response->_json['errors'])) {
             return null;
