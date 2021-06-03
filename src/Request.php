@@ -95,8 +95,7 @@ abstract class Request
         $http = array_map('strtolower', $this->httpTypes);
 
         // Invoke for methods
-        if (in_array($method, $http)) //TODO: Throw exception for unauthorized method types now we just ignore themslac
-        {
+        if (in_array($method, $http)) {
             $this->response = $this->makeHttpRequest($this->url(), $method, $this->payload, $this->headers);
         } else {
             throw new Exception(
