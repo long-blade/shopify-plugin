@@ -17,6 +17,6 @@ class Variants extends Shopify
     public function updateVariant($id, array $data)
     {
         $this->addToPathEnd($id);
-        return $this->put(['variant' => $data])->getResource();
+        return $this->put(['variant' => $data]);
     }
 }
