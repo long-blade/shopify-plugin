@@ -145,7 +145,7 @@ abstract class Model implements ModelInterface
     }
 
     /**
-     * @return string
+     * Set the models type by class name.
      */
     protected function setModelType(): void
     {
