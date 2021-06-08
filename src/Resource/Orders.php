@@ -54,12 +54,13 @@ class Orders extends Shopify
      * https://shopify.dev/docs/admin-api/rest/reference/orders/order#cancel-2021-04
      *
      * @param $id
+     * @param array $data
      * @return mixed
      */
-    public function cancelOrder($id)
+    public function cancelOrder($id, array $data = [])
     {
         $this->addToPathEnd($id); // orders/$id.json
         $this->addToPathEnd('cancel'); // orders/$id/cancel.json
-        return $this->post();
+        return $this->post($data);
     }
 }
