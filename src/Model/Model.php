@@ -51,11 +51,11 @@ abstract class Model implements ModelInterface
     /**
      * Model constructor.
      *
-     * @param $product
+     * @param $array
      */
-    public function __construct($object)
+    public function __construct($array)
     {
-        foreach ($object as $propKey => $propValue) {
+        foreach ($array as $propKey => $propValue) {
             $this->$propKey = $propValue;
         }
 
