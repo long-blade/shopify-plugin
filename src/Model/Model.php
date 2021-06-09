@@ -53,10 +53,9 @@ abstract class Model implements ModelInterface
      *
      * @param $product
      */
-    public function __construct($product)
+    public function __construct($object)
     {
-        foreach ($product as $propKey => $propValue)
-        {
+        foreach ($object as $propKey => $propValue) {
             $this->$propKey = $propValue;
         }
 

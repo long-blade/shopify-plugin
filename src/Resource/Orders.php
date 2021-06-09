@@ -57,7 +57,7 @@ class Orders extends Shopify
      * @param array $data
      * @return mixed
      */
-    public function cancelOrder($id, array $data = [])
+    public function canceledOrder($id, array $data = [])
     {
         $this->addToPathEnd($id); // orders/$id.json
         $this->addToPathEnd('cancel'); // orders/$id/cancel.json
