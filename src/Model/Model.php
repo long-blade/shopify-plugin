@@ -195,6 +195,7 @@ abstract class Model implements ModelInterface
      */
     public function getPayload(): array
     {
-        return $payload[$this->getModelName()] = $this->getData()->toArray();
+        $payload[$this->getModelName()] = $this->getData()->toArray();
+        return $payload;
     }
 }
