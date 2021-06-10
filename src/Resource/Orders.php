@@ -44,7 +44,7 @@ class Orders extends Shopify
     {
         $this->addToPathEnd($id); // orders/$id.json
         $this->addToPathEnd('fulfillments'); // orders/$id/fulfillments.json
-        $this->post($fulfillment->getPayload());
+        return $this->post($fulfillment->getPayload());
     }
 
     /**
