@@ -25,9 +25,9 @@ class Orders extends Shopify
      *
      * @return array|null
      */
-    public function getOrdersSinceId($id): ?array
+    public function getOrdersSinceId($id, $status = 'any'): ?array
     {
-        $this->payload = ['since_id' => $id, 'limit' => '250', 'status' => 'any'];
+        $this->payload = ['since_id' => $id, 'limit' => '250', 'status' => $status];
         $this->get($this->payload);
 
         return $this->getPaginatedResource();
