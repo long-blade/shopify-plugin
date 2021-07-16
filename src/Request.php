@@ -66,7 +66,17 @@ abstract class Request
      */
     protected function makeHttpRequest(string $endpoint, string $method = 'get', $payload = [], array $headers = [])
     {
+        $payload = json_encode($payload, JSON_UNESCAPED_UNICODE);
+        $headers['type'] = 'json';
         return $this->client->$method($endpoint, $payload, $headers);
+    }
+
+    /**
+     * @param array $headers
+     */
+    public function setHeaders(array $headers)
+    {
+        $this->headers = $headers;
     }
 
     /**
