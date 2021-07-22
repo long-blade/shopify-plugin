@@ -2,11 +2,16 @@
 
 namespace Shopify\Model;
 
-
+/**
+ * Create a new Product shopify obj.
+ *
+ * Class Product
+ * @package Shopify\Model
+ */
 class Product extends Model
 {
     protected $properties = [
-        'id' => 0,
+        'id' => 0, // TODO: May be this is not needed for a new complete product
         'title' => '',
         'body_html' => '',
         'vendor' => '',
