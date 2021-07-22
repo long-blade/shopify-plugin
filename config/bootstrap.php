@@ -3,7 +3,7 @@
 return [
 
     'shopify_api' => [
-        'version' => '2021-01',
+        'version' => '2021-07',
         'admin_path' => '/admin/api/'
     ],
 
