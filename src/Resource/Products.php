@@ -2,6 +2,7 @@
 
 namespace Shopify\Resource;
 
+use Exception;
 use Shopify\Model\Product;
 use Shopify\Shopify;
 use Shopify\Traits\Exporter;
@@ -28,5 +29,23 @@ class Products extends Shopify //implements resource interface
         $this->getById($productId);
         $this->addToPathEnd('variants');
         return $this->get()->getResource();
+    }
+
+    /**
+     * Update an existing product.
+     *
+     * @param array $data
+     * @return mixed
+     * @throws Exception
+     */
+    public function update(array $data)
+    {
+        if (!isset($data['product']['id'])) {
+            throw new Exception(
+                sprintf('Missing property \'id\' provided %s.', static::class)
+            );
+        }
+        $this->addToPathEnd($data['product']['id']);
+        return $this->put($data);
     }
 }
