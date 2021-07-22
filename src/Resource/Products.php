@@ -32,20 +32,16 @@ class Products extends Shopify //implements resource interface
     }
 
     /**
-     * Update an existing product.
+     * Update existing shopify product.
      *
+     * @param $id
      * @param array $data
      * @return mixed
-     * @throws Exception
      */
-    public function update(array $data)
+    public function updateProduct($id, array $data)
     {
-        if (!isset($data['product']['id'])) {
-            throw new Exception(
-                sprintf('Missing property \'id\' provided %s.', static::class)
-            );
-        }
-        $this->addToPathEnd($data['product']['id']);
-        return $this->put($data);
+        $this->addToPathEnd($id);
+        $data['id'] = $id; // Add id to array.
+        return $this->put(['variant' => $data]);
     }
 }
