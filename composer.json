@@ -1,0 +1,33 @@
+{
+    "name": "long-blade/shopify-plugin",
+    "description": "Shopify plugin for CakePHP",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "cakephp",
+        "plugin"
+    ],
+    "authors": [
+        {
+        "name" : "Mavroforakis Michael",
+        "email": "mixalis365@hotmail.com"
+        }
+    ],
+    "require": {
+        "cakephp/cakephp": "^4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Shopify\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Shopify\\Test\\": "tests/",
+            "Cake\\Test\\": "vendor/cakephp/cakephp/tests/"
+        }
+    }
+}
