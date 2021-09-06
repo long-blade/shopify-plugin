@@ -68,6 +68,7 @@ abstract class Request
     {
         $payload = json_encode($payload, JSON_UNESCAPED_UNICODE);
         $headers['type'] = 'json';
+        usleep(500000);
         return $this->client->$method($endpoint, $payload, $headers);
     }
 
