@@ -16,7 +16,7 @@ class InventoryLevels extends Shopify
     /**
      * Adjust the inventory for an inventory item.
      *
-     * @param \Shopify\Model\Inventory $inventoryItem
+     * @param Inventory $inventoryItem
      *
      * @return $this
      */
@@ -31,14 +31,14 @@ class InventoryLevels extends Shopify
     /**
      * Set the inventory for an inventory item.
      *
-     * @param \Shopify\Model\Inventory $inventoryItem
+     * @param Inventory $inventoryItem
      *
      * @return $this
      */
-    public function setInventory(Inventory $inventoryItem){
+    public function setInventory(Inventory $inventoryItem): InventoryLevels
+    {
         $this->addToPathEnd('set');
         $this->post($inventoryItem)->getResource();
-
         return $this;
     }
 }

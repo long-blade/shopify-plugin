@@ -37,11 +37,37 @@ class Products extends Shopify //implements resource interface
      * @param $id
      * @param array $data
      * @return mixed
+     * @throws Exception
      */
     public function updateProduct($id, array $data)
     {
+        if (!$id) {
+            throw new Exception(
+                sprintf('Missing property \'id\' provided %s.', static::class)
+            );
+        }
+
         $this->addToPathEnd($id);
         $data['id'] = $id; // Add id to array.
-        return $this->put(['variant' => $data]);
+        return $this->put(['product' => $data]);
+    }
+
+    /**
+     * @param $productId
+     * @param array $variantData
+     * @return mixed
+     * @throws Exception
+     */
+    public function createNewVariantForProduct($productId, array $variantData)
+    {
+        if (!$productId) {
+            throw new Exception(
+                sprintf('Missing property \'productId\' provided %s.', static::class)
+            );
+        }
+
+        $this->addToPathEnd($productId);
+        $this->addToPathEnd('variants');
+        return $this->post(['variant' => $variantData]);
     }
 }

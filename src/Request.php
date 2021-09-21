@@ -2,8 +2,8 @@
 
 namespace Shopify;
 
-use Cake\Core\Exception\Exception;
 use Cake\Http\Client;
+use Exception;
 use Shopify\Model\Model;
 
 /**
@@ -66,8 +66,10 @@ abstract class Request
      */
     protected function makeHttpRequest(string $endpoint, string $method = 'get', $payload = [], array $headers = [])
     {
-        $payload = json_encode($payload, JSON_UNESCAPED_UNICODE);
-        $headers['type'] = 'json';
+        if (isset($headers['type']) && $headers['type'] == 'json')
+            $payload = json_encode($payload, JSON_UNESCAPED_UNICODE);
+
+        usleep(500000);
         return $this->client->$method($endpoint, $payload, $headers);
     }
 
@@ -84,6 +86,7 @@ abstract class Request
      * @param $arguments
      *
      * @return $this
+     * @throws Exception
      */
     public function __call($method, $arguments): Request
     {
@@ -120,7 +123,6 @@ abstract class Request
      * Get a single resource by id.
      *
      * @param $id
-     *
      * @return mixed
      */
     public function getById($id)
@@ -139,20 +141,16 @@ abstract class Request
     }
 
     /**
-     * @return mixed|null
+     * @return array|null
      */
     public function getErrors(): ?array
     {
         $errors = $this->response->getJson();
+
         if (empty($errors) || !isset($errors['errors']) || empty($errors['errors'])) {
             return null;
         }
 
-        // TODO: temp fix for string return investigate more
-        if (is_string($errors['errors'])) {
-            return null;
-        }
-
-        return $errors['errors'];
+        return $errors;
     }
 }
